@@ -43,28 +43,28 @@ export const getPost=async (req,res)=>{
         });
 
         // for saved post to check user loged in or not 
-        let userId;
-        const token=req.cookies?.token;
-        if(!token){
-            userId=null;
-        }else{
-            jwt.verify(token,process.env.JWT_SECRET_KEY, async(err,payload)=>{
-                if(err){
-                    userId=null;
-                }else{
-                    userId=payload.id;
-                }
-            });
-        }
+        // let userId;
+        // const token=req.cookies?.token;
+        // if(!token){
+        //     userId=null;
+        // }else{
+        //     jwt.verify(token,process.env.JWT_SECRET_KEY, async(err,payload)=>{
+        //         if(err){
+        //             userId=null;
+        //         }else{
+        //             userId=payload.id;
+        //         }
+        //     });
+        // }
 
-        const saved = await prisma.savedPost.findUnique({
-            where:{
-                userId_postId:{
-                    postId:id,
-                    userId,
-                },
-            },
-        });
+        // const saved = await prisma.savedPost.findUnique({
+        //     where:{
+        //         userId_postId:{
+        //             postId:id,
+        //             userId,
+        //         },
+        //     },
+        // });
 
 
 
